@@ -7,24 +7,27 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
+ 
+
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     *@return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
+     *@return \Illuminate\Http\Response
      */
     public function index()
     {
-        dd(123);
+       $users = User::get();
+       return view('index', compact('users'));
     }
 
     /**
      * Show the form for creating a new resource.
-     *
+     *@return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        return view('form', compact('users'));
     }
 
     /**
@@ -35,7 +38,7 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
     }
 
     /**
@@ -46,18 +49,19 @@ class UsersController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view('show');
+    
     }
 
     /**
      * Show the form for editing the specified resource.
-     *
+     *@return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
     public function edit(User $user)
     {
-        //
+    return view('form',compact('user'));
     }
 
     /**

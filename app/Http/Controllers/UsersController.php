@@ -17,7 +17,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-       $users = User::get();
+       $users = User::paginate(15);
        return view('index', compact('users'));
     }
 
@@ -28,8 +28,8 @@ class UsersController extends Controller
      */
     public function create()
     {
-        $users = User::get();
-        return view('form', compact('users'));
+       
+        return view('form');
     }
 
     /**

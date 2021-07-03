@@ -21,12 +21,18 @@ action="{{ route('users.store')
 @endisset
 <div class="row">
   <div class="col">
-    <input type="text" class="form-control" placeholder="Name" aria-label="Name" name="name" value="{{isset($user) ? $user->name : null }}">
+    <input type="text" class="form-control" placeholder="Name" aria-label="Name" name="name" value="{{ old('name', isset($user) ? $user->name : null )}}">
+    @error('name')
+    <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
   </div>
   </div>
   <div class="row mt-3">
   <div class="col">
-    <input type="text" class="form-control" placeholder="email" aria-label="email" name="email" value="{{isset($user) ? $user->email : null }}">
+    <input type="text" class="form-control" placeholder="email" aria-label="email" name="email" value="{{old('email', isset($user) ? $user->email : null )}}">
+    @error('email')
+    <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
   </div>
 
 </div>
